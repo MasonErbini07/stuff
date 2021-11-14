@@ -7,7 +7,7 @@ async function getName(authToken) {
 
 async function addCurrencies() {
     const tokens = Number(prompt('How many tokens do you want to add to your account? (1000 daily)'));
-    const myToken = localStorage.token.split('JWT ')[1];
+    const myToken = LocalStorage.token.split('JWT ')[1];
 
     if (tokens > 1000) {
         alert('You can add up to 1000 tokens daily.')
@@ -18,11 +18,11 @@ async function addCurrencies() {
         headers: {
             "referer": "https://www.blooket.com/",
             "content-type": "application/json",
-            "authorization": localStorage.token
+            "authorization": LocalStorage.token
         },
         body: JSON.stringify({
             addedTokens: tokens,
-            addedXp: 300,
+            addedXp: 1000,
             name: await getName(myToken)
         })
     });
